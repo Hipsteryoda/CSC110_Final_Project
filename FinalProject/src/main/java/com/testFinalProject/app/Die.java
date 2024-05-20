@@ -16,7 +16,7 @@ public class Die {
   }
 
   public void roll() {
-    dieValue = randNum.nextInt(6);
+    dieValue = randNum.nextInt(6) + 1;  // random.nextInt() has an inclusive 0; add 1 to it
   }
 
   public boolean equals(Die die2) {
