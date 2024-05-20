@@ -1,12 +1,16 @@
 package com.testFinalProject.app;
 
 import java.util.Scanner;
-import java.awt.Panel;
 import java.util.InputMismatchException;
 
 public class DoubleDice {
+  public static void printMoney(double money) {
+    System.out.print("You have $");
+    System.out.printf("%.2f\n", money);
+  } 
+
   public static void quitMessage() {
-    System.out.println("See you around, winner!");
+    System.out.println("\nSee you around, winner!");
   }
 
   public static void outOfMoneyMessage() {
@@ -32,7 +36,7 @@ public class DoubleDice {
     System.out.println();
   }
 
-  public static int playHand(int bet, int money, Die die1, Die die2) {
+  public static double playHand(double bet, double money, Die die1, Die die2) {
     die1.roll();                    // FIXME: the die values can come in as none. "You rolled a none and a four"
     die2.roll();
     
@@ -42,14 +46,14 @@ public class DoubleDice {
     // Check the value of the dice
     if (die1.equals(die2)) {
       money += bet;
-      System.out.println("You win $" + bet);
-      System.out.println("");
+      System.out.print("You win $");
+      System.out.printf("%.2f\n\n", bet);
     }
     else {
       // System.out.println("Die 1: " + die1.getValue() + " Die 2: " + die2.getValue());
       money -= bet;
-      System.out.println("You lose $" + bet);
-      System.out.println("");
+      System.out.print("You lose $");
+      System.out.printf("%.2f\n\n", bet);
     }
     return money;
   }
@@ -60,30 +64,30 @@ public class DoubleDice {
     Die die1 = new Die();
     Die die2 = new Die();
     // initialize currentMoney and declare currentBet 
-    int currentMoney = 100;
-    int currentBet;
-    boolean quit = false;
+    double currentMoney = 100;
+    double currentBet;
+    boolean run = true;
 
     
-    while ( (currentMoney > 0) || (!quit) ) {
+    while ( (Double.compare(currentMoney, 0.0) > 0) && (run) ) {
        // Initial prompt and reading currentBet
-      System.out.println("You have $" + currentMoney);
+      printMoney(currentMoney);
       System.out.print("How much would you like to bet (Enter 0 to quit)? ");
       try {
-        currentBet = scnr.nextInt();    // FIXME: don't let user bet more than remaining money
+        currentBet = scnr.nextDouble();    // FIXME: don't let user bet more than remaining money
                                         // TODO: allow user to bet in dollars and cents 
-        if (currentBet == 0) {  // exit the program
-          quit = true;
+        if (Double.compare(currentBet, 0.0) == 0) {  // exit the program
+          run = false;
           quitMessage();
           break;
         }
-        else if (currentBet > currentMoney) { // check the user is not betting more than they have
+        else if (Double.compare(currentBet, currentMoney) > 0) { // check the user is not betting more than they have
           betTooBigMessage(scnr);
         }
-        else if (currentBet < 0) {
+        else if (Double.compare(currentBet, 0.0) < 0) {
           negativeBetMessage(scnr);
         }
-        else if(currentBet > 1) {
+        else if(Double.compare(currentBet, 0.01) > 0) {
           currentMoney = playHand(currentBet, currentMoney, die1, die2);
         }
       }
@@ -91,5 +95,11 @@ public class DoubleDice {
         invalidInputMessage(scnr);
       }
     }
+
+    if (Double.compare(currentMoney, 0.0) == 0) { // check if our of money
+      outOfMoneyMessage();
+    }
+    
   }
+
 }
