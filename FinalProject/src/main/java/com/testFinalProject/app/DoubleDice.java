@@ -37,7 +37,7 @@ public class DoubleDice {
   }
 
   public static double playHand(double bet, double money, Die die1, Die die2) {
-    die1.roll();                    // FIXME: the die values can come in as none. "You rolled a none and a four"
+    die1.roll();
     die2.roll();
     
     // tell user what they rolled
@@ -87,7 +87,7 @@ public class DoubleDice {
         else if (Double.compare(currentBet, 0.0) < 0) {   // make sure bet is positive number
           negativeBetMessage(scnr);
         }
-        else {      // play a round
+        else {  // play a round
           currentMoney = playHand(currentBet, currentMoney, die1, die2);
         }
       }
@@ -96,7 +96,7 @@ public class DoubleDice {
       }
     }
 
-    if (Double.compare(currentMoney, 0.0) == 0) { // check if our of money
+    if (Double.compare(currentMoney, 0.0) == 0) { // check if out of money
       outOfMoneyMessage();
     }
     

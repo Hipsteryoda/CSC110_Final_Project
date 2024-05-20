@@ -1,25 +1,25 @@
 package com.testFinalProject.app;
 
-import java.util.Random;
+import java.util.Random;  // Random class for random number generation
 
 public class Die {
   private int dieValue;
   Random randNum;
 
-  public Die() { 
+  public Die() {  // constructor for Die 
     dieValue = 0;
     randNum = new Random();
   }
 
-  public int getValue() {
+  public int getValue() {   // retrieves die value
     return dieValue;
   }
 
-  public void roll() {
+  public void roll() {  // sets the die value to a new random number; simulates a roll
     dieValue = randNum.nextInt(6) + 1;  // random.nextInt() has an inclusive 0; add 1 to it
   }
 
-  public boolean equals(Die die2) {
+  public boolean equals(Die die2) {   // checks equality to a second die object 
     if (die2.getValue() == dieValue) {
       return true;
     }
@@ -28,7 +28,7 @@ public class Die {
     }
   }
 
-  public String toString() {
+  public String toString() {  // converts the die value to a string with a basic switch-case statement
     String stringValue;
     switch (dieValue) {
       case 1:
