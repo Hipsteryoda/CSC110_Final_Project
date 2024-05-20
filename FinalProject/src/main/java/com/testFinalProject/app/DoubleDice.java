@@ -10,12 +10,12 @@ public class DoubleDice {
   } 
 
   public static void quitMessage() {
-    System.out.println("\nSee you around, winner!");
+    System.out.println("See you around, winner!");
   }
 
   public static void outOfMoneyMessage() {
-    System.out.println("You are out of money!");
-    System.out.println("Better luck next time");
+    System.out.println("You are out of money...");
+    System.out.println("Better luck next time!");
   }
 
   public static void invalidInputMessage(Scanner scnr) {
@@ -68,15 +68,15 @@ public class DoubleDice {
     double currentBet;
     boolean run = true;
 
-    
+    // all double checking done through Double built-in method .compare()    
     while ( (Double.compare(currentMoney, 0.0) > 0) && (run) ) {
        // Initial prompt and reading currentBet
       printMoney(currentMoney);
       System.out.print("How much would you like to bet (Enter 0 to quit)? ");
+
       try {
-        currentBet = scnr.nextDouble();    // FIXME: don't let user bet more than remaining money
-                                        // TODO: allow user to bet in dollars and cents 
-        if (Double.compare(currentBet, 0.0) == 0) {  // exit the program
+        currentBet = scnr.nextDouble();
+        if (Double.compare(currentBet, 0.0) == 0) {  // exit the program if 0
           run = false;
           quitMessage();
           break;
@@ -84,14 +84,14 @@ public class DoubleDice {
         else if (Double.compare(currentBet, currentMoney) > 0) { // check the user is not betting more than they have
           betTooBigMessage(scnr);
         }
-        else if (Double.compare(currentBet, 0.0) < 0) {
+        else if (Double.compare(currentBet, 0.0) < 0) {   // make sure bet is positive number
           negativeBetMessage(scnr);
         }
-        else if(Double.compare(currentBet, 0.01) > 0) {
+        else {      // play a round
           currentMoney = playHand(currentBet, currentMoney, die1, die2);
         }
       }
-      catch (InputMismatchException e) {
+      catch (InputMismatchException e) { // catches anything that isn't a double or can't be cast to one inherently
         invalidInputMessage(scnr);
       }
     }
