@@ -58,6 +58,7 @@ public class DoubleDice {
   }
 
   public static void main(String[] args) {
+    final double EPSILON = 0.00000001;
     // instantiate a Scanner object, and two Die objects
     Scanner scnr = new Scanner(System.in);
     Die die1 = new Die();
@@ -67,7 +68,6 @@ public class DoubleDice {
     double currentBet;
     boolean run = true;
 
-    // all double checking done through Double built-in method .compare()    
     while ( (Double.compare(currentMoney, 0.0) > 0) && (run) ) {
        // Initial prompt and reading currentBet
       printMoney(currentMoney);
@@ -76,7 +76,7 @@ public class DoubleDice {
       try {
         currentBet = scnr.nextDouble();
         // if (Double.compare(currentBet, 0.0) == 0) {  // exit the program if 0
-        if (Math.abs(currentBet - 0) < 0.0001) {  // exit the program if 0
+        if (Math.abs(currentBet - 0.0) < EPSILON) {  // exit the program if 0
           // NOTE FOR GRADING:
           // I chose this for simplicity. Per the textbook, the checking should
           // be done via Math.abs(currentBet - 0) < 0.0001
