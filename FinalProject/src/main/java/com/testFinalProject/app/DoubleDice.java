@@ -58,7 +58,7 @@ public class DoubleDice {
   }
 
   public static void main(String[] args) {
-    final double EPSILON = 0.00000001;
+    final double EPSILON = 0.0000001;
 
     // instantiate a Scanner object, and two Die objects
     Scanner scnr = new Scanner(System.in);
@@ -71,7 +71,7 @@ public class DoubleDice {
     boolean run = true;
 
     // Logic for gameplay
-    while ( (Double.compare(currentMoney, 0.0) > 0) && (run) ) {
+    while ( (Double.compare(currentMoney, 0.01) > 0) && (run) ) {    // FIXME: sub-hundredths bets allow the user to go to $0.00 without ending the game
        // Initial prompt and reading currentBet
       printMoney(currentMoney);
       System.out.print("How much would you like to bet (Enter 0 to quit)? ");
