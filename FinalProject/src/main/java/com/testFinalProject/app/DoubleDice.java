@@ -71,7 +71,7 @@ public class DoubleDice {
     boolean run = true;
 
     // Logic for gameplay
-    while ( (Double.compare(currentMoney, 0.01) > 0) && (run) ) {    // FIXME: sub-hundredths bets allow the user to go to $0.00 without ending the game
+    while ( (Double.compare(currentMoney, 0.01) > 0) && (run) ) {
        // Initial prompt and reading currentBet
       printMoney(currentMoney);
       System.out.print("How much would you like to bet (Enter 0 to quit)? ");
