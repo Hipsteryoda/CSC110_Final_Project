@@ -2,7 +2,7 @@
 This project is a small, CLI dice game built for CSC110 - Java Final Project.
 
 ## Project Structure
-Project was built using Apache Maven. Die and DoubleDice files are located in `/src/main/java/com`
+Project was built using Apache Maven. Die and DoubleDice source and class files are located in `FinalProject/src/main/java/com/finalProject/app/`.
 
 # How to play the game of Double Dice
 
