@@ -1,4 +1,4 @@
-package com.testFinalProject.app;
+package com.finalProject.app;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;

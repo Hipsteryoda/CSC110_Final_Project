@@ -1,3 +1,13 @@
+# CSC110 Final Project
+This project is a small, CLI dice game built for CSC110 - Java Final Project.
+
+## Project Structure
+Project was built using Apache Maven. Die and DoubleDice files are located in `/src/main/java/com`
+
+# How to play the game of Double Dice
+
+The player begins with $100.00.  The player is asked for a bet amount, and then a pair of dice are rolled.  If the two values on the dice are the same (if the player rolled doubles), the player wins an amount equal to their bet amount.  If the two values on the dice do not match, the player loses their bet amount.  The game ends when either the player decides to end the game, or when the player runs out of money.
+
 # Program Requirements
 Your program should have two classes:
 

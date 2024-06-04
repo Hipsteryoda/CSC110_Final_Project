@@ -1,4 +1,4 @@
-package com.testFinalProject.app;
+package com.finalProject.app;
 
 import java.util.Random;  // Random class for random number generation
 
